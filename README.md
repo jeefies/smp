@@ -14,4 +14,10 @@ After that, you can use `pyenv install -l` to know which version you can install
 Then use `pyenv install x.x.x` to instal it (it might take a few minutes).  
 
 use `python3 apt.py libs.txt`  
-to install the dependences for need for python. Also, you can modify the `libs.txt` into other libs.
+to install the dependences for need for python. Also, you can modify the `libs.txt` into other libs.  
+But before using if, you need to copy the source list for your `apt`.
+```
+sudo cp sources.list /etc/apt/sources.list 
+#if your raspberry pi's system is arm64, change first sources.list into sources.list.64
+sudo cp raspi.list /etc/apt/sources.list.d/raspi.list
+```
