@@ -25,3 +25,5 @@ libxslt1-dev
 zlib1g-dev
 build-essential
 libcurl4-openssl-dev
+libstdc++6-arm*-cross
+libatomic1-arm*
