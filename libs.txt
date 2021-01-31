@@ -14,8 +14,6 @@ libgdbm-dev
 libc6-dev
 libreadline-gplv2-dev
 libbz2-dev
-midori
-totem
 libtesseract-dev
 libleptonica-dev
 tesseract-ocr
