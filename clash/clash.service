@@ -1,0 +1,9 @@
+[Unit]
+Description=Clash Board
+
+[Service]
+ExecStart=/usr/bin/clash -d /etc/clash
+
+[Install]
+WantedBy=multi-user.target
+

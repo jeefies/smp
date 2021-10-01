@@ -1,5 +1,18 @@
 # RaspBian libs
 
+## Auto Update
+`git clone https://github.com/jeefies/smp.git` or `git clone https://gitee.com/jeefy/smp.git`.  
+cd into `smp` directory and run `./autoupdate.sh`.  
+This will help you to change the mirror of the apt and update it.  
+
+## Clash service
+cd into `clash` directory and run `./install-clash.sh`.  
+this will help you to download clash from github automatically (do not need proxy).  
+also would help you to create a service so that you can use it without manusually run clash.  
+> Help you run clash when every reboot.
+
+
+
 If you want to download python versions, use  
 `git clone https://github.com/pyenv/pyenv.git ~/.pyenv`  
 to clone it to your home path.  
