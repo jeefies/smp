@@ -29,6 +29,8 @@ if [ ! -f "/usr/bin/clash" ]; then
 	echo "extract to /usr/bin/clash"
 fi
 
+sudo chmod +x /usr/bin/clash
+
 echo "Get sources done, start to create clash service"
 sudo cp ./clash.service /etc/systemd/system
 
