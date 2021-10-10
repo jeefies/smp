@@ -6,7 +6,7 @@ armhf="$proxy_url${clash_url}7$clash_url_end"
 arm64="$proxy_url${clash_url}8$clash_url_end"
 
 if [ ! -d "/etc/clash" ]; then
-	sudo mkdir /etc/clash
+	mkdir /etc/clash
 fi
 
 if [ ! -f "/etc/clash/config.yaml" ]; then
@@ -19,23 +19,24 @@ fi
 if [ ! -f "/usr/bin/clash" ]; then
 	if [ `uname -m` = 'arm64' ] || [ `uname -m` = 'aarch64' ]; then
 		echo 'arm64'
-		sudo wget $arm64 -O /tmp/clash.gz
+		wget $arm64 -O /tmp/clash.gz
 	else
 		echo 'armhf'
-		sudo wget $armhf -O /tmp/clash.gz
+		wget $armhf -O /tmp/clash.gz
 	fi
 	echo 'get clash.gz from github'
-	sudo sh -c "gzip -c -d /tmp/clash.gz > /usr/bin/clash"
+	sh -c "gzip -c -d /tmp/clash.gz > /usr/bin/clash"
+	chmod +x /usr/bin/clash
 	echo "extract to /usr/bin/clash"
 fi
 
 echo "Get sources done, start to create clash service"
-sudo cp ./clash.service /etc/systemd/system
+cp ./clash.service /etc/systemd/system
 
 echo "Enable clash and start it..."
-sudo systemctl enable clash
+systemctl enable clash
 echo "Enabled..."
-sudo systemctl start clash
+systemctl start clash
 echo "Started..."
-sudo systemctl status clash | dd status=none
+systemctl status clash | dd status=none
 echo "All done!"
