@@ -11,7 +11,18 @@ this will help you to download clash from github automatically (do not need prox
 also would help you to create a service so that you can use it without manusually run clash.  
 > Help you run clash when every reboot.
 
+## Golang Environment Install
+**It's not stable**  
+After you run the install file, you should edit your environment variables.  
+add `export GOROOT="$HOME/.go"` and `export PATH="$PATH:$GOROOT/bin"` to `~/.bashrc`.  
 
+## Wechat and QQ
+wechat see the deb file under wechat folder.  
+QQ can download `.sh` install file from `https://im.qq.com/linuxqq/download.html`, [link here](https://im.qq.com/linuxqq/download.html)
+
+## Minecraft 1.12.2
+By using HMCL laucher, you can play it freely.  
+But first, you should do something to make sure it can run.
 
 If you want to download python versions, use  
 `git clone https://github.com/pyenv/pyenv.git ~/.pyenv`  
