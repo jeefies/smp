@@ -1,4 +1,4 @@
-config_file="https://subcon.dlj.tf/sub?target=clashr&new_name=true&url=https%3A%2F%2Fraw.fastgit.org%2Ffreefq%2Ffree%2Fmaster%2Fv2&insert=false&config=https%3A%2F%2Fraw.githubusercontent.com%2FACL4SSR%2FACL4SSR%2Fmaster%2FClash%2Fconfig%2FACL4SSR_Online.ini"
+config_file="https://github.com/skywolf627/VmessActions/raw/main/clash.yml"
 proxy_url="https://ghproxy.com/"
 clash_url="https://github.com/Dreamacro/clash/releases/download/v1.7.1/clash-linux-armv"
 clash_url_end="-v1.7.1.gz"
@@ -11,9 +11,14 @@ fi
 
 if [ ! -f "/etc/clash/config.yaml" ]; then
 	echo "Get clash config file to /etc/clash"
-	wget $config_file -O /etc/clash/config.yaml
+	wget $proxy_url$config_file -O /etc/clash/config.yaml
 else
 	echo "Config File Already exists"
+fi
+
+if [ $1 == "update" ]; then
+	echo "Update Clash config file"
+	wget $proxy_url$config_file -O /etc/clash/config.yaml
 fi
 
 if [ ! -f "/usr/bin/clash" ]; then
