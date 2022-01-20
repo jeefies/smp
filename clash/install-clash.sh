@@ -1,4 +1,5 @@
 config_file="https://github.com/skywolf627/VmessActions/raw/main/clash.yml"
+config_file="https://raw.githubusercontent.com/adiwzx/freenode/main/adispeed.yml"
 proxy_url="https://ghproxy.com/"
 clash_url="https://github.com/Dreamacro/clash/releases/download/v1.7.1/clash-linux-armv"
 clash_url_end="-v1.7.1.gz"
@@ -16,7 +17,7 @@ else
 	echo "Config File Already exists"
 fi
 
-if [ $1 == "update" ]; then
+if [ $1 = "update" ]; then
 	echo "Update Clash config file"
 	wget $proxy_url$config_file -O /etc/clash/config.yaml
 fi
