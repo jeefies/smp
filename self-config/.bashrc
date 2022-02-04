@@ -133,3 +133,11 @@ _pip_completion()
 complete -o default -F _pip_completion pip3
 # pip bash completion end
 
+alias gis="git status"
+alias gic="git commit"
+alias gip="git push"
+alias gil="git log"
+alias gils="git ls-files"
+alias gii="git init"
+
+alias gicl="gils | xargs cat | wc -l"

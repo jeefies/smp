@@ -14,11 +14,14 @@ syntax on
 filetype plugin indent on
 
 "autocmd VimLeave * mksession!
-"autocmd InsertLeave * w
+autocmd InsertLeave *.tcl w
 
 " for nerd tree use
 map <F3> :NERDTreeMirror<CR>
 map <F3> :NERDTreeToggle<CR>
+" for tag list use
+map <F4> :TlistToggle<CR>
+
 " auto open when no file choosen
 autocmd vimenter * if !argc()|NERDTree|endif
 let NERDTreeIgnore = ['\.pyc$', '^__pycache__$', '\.swp$', '\.swo$', '\.o$', '\.so$', '\.dll$', '\.a$']  " 过滤所有.pyc文件不显示
@@ -44,9 +47,9 @@ Plug 'jiangmiao/auto-pairs'
 
 Plug 'vim-airline/vim-airline'
 
-"Plug 'ianva/vim-youdao-translater'
-
 Plug 'vim-scripts/SuperTab'
+
+Plug 'vim-scripts/taglist.vim'
 
 "Plug 'airblade/vim-gitgutter'
 
