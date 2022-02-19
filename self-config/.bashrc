@@ -88,9 +88,9 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-#alias ll='ls -l'
-#alias la='ls -A'
-#alias l='ls -CF'
+alias ll='ls -l'
+alias la='ls -A'
+alias l='ls -CF'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -133,6 +133,7 @@ _pip_completion()
 complete -o default -F _pip_completion pip3
 # pip bash completion end
 
+alias gia="git add"
 alias gis="git status"
 alias gic="git commit"
 alias gip="git push"
@@ -141,3 +142,5 @@ alias gils="git ls-files"
 alias gii="git init"
 
 alias gicl="gils | xargs cat | wc -l"
+
+export PATH="$PATH:$HOME/Downloads/VSCodium/bin"

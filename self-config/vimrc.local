@@ -1,7 +1,4 @@
-set nu
-set cursorline 
-" highlight current line
-" But no use for tender theme
+set cursorline " highlight current line
 
 " tab 缩进
 set tabstop=4 " 设置Tab长度为4空格
@@ -13,18 +10,17 @@ syntax enable
 syntax on
 filetype plugin indent on
 
-"autocmd VimLeave * mksession!
-autocmd InsertLeave *.tcl w
+" for yaodao translation
+vnoremap <silent> <C-T> :<C-u>Ydv<CR>
+nnoremap <silent> <C-T> :<C-u>Ydc<CR>
+noremap <leader>yd :<C-u>Yde<CR>
 
 " for nerd tree use
 map <F3> :NERDTreeMirror<CR>
 map <F3> :NERDTreeToggle<CR>
-" for tag list use
-map <F4> :TlistToggle<CR>
-
 " auto open when no file choosen
 autocmd vimenter * if !argc()|NERDTree|endif
-let NERDTreeIgnore = ['\.pyc$', '^__pycache__$', '\.swp$', '\.swo$', '\.o$', '\.so$', '\.dll$', '\.a$']  " 过滤所有.pyc文件不显示
+let NERDTreeIgnore = ['\.pyc$', '^__pycache__$']  " 过滤所有.pyc文件不显示
 let g:NERDTreeShowLineNumbers=1  " 是否显示行号
 let g:NERDTreeHidden=0     "不显示隐藏文件
 "Making it prettier
@@ -33,29 +29,29 @@ let NERDTreeDirArrows = 1
 " Open the existing NERDTree on each new tab.
 autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
 
-call plug#begin('/usr/share/vim/vim81/plugged')
+call plug#begin('/usr/share/vim/vim82/plugged')
 
-Plug 'junegunn/vim-easy-align'
+Plug 'https://hub.fastgit.org/junegunn/vim-easy-align.git'
 
-Plug 'preservim/nerdtree'
+Plug 'https://hub.fastgit.org/preservim/nerdtree.git'
 
-Plug 'jistr/vim-nerdtree-tabs'
+Plug 'https://hub.fastgit.org/jistr/vim-nerdtree-tabs.git'
 
-Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'https://hub.fastgit.org/Xuyuanp/nerdtree-git-plugin.git'
 
-Plug 'jiangmiao/auto-pairs'
+Plug 'https://hub.fastgit.org/jiangmiao/auto-pairs.git'
 
-Plug 'vim-airline/vim-airline'
+Plug 'https://hub.fastgit.org/vim-airline/vim-airline.git'
 
-Plug 'vim-scripts/SuperTab'
+"Plug 'ianva/vim-youdao-translater'
 
-Plug 'vim-scripts/taglist.vim'
+Plug 'https://hub.fastgit.org/vim-scripts/SuperTab.git'
 
 "Plug 'airblade/vim-gitgutter'
 
-Plug 'acarapetis/vim-colors-github'
-Plug 'rakr/vim-one'
-Plug 'jacoborus/tender.vim'
+Plug 'https://hub.fastgit.org/acarapetis/vim-colors-github.git'
+Plug 'https://hub.fastgit.org/rakr/vim-one.git'
+Plug 'https://hub.fastgit.org/jacoborus/tender.vim.git'
 
 call plug#end()
 
@@ -69,14 +65,5 @@ func! RunCompile()
 	exec "w"
 	if &filetype == 'tcl'
 		exec "!tclsh %"
-	endif
-
-	if &filetype == 'c'
-		exec "!gcc % -o %<"
-		exec "!./%<"
-	endif
-
-	if &filetype == 'python'
-		exec "!python3 %"
 	endif
 endfunc
