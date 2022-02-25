@@ -30,6 +30,9 @@ export arch_64_md5="$arch_64.md5"
 export arch='https://mirrors.tuna.tsinghua.edu.cn/archlinuxarm/os/rpi/ArchLinuxARM-2021.07-rpi-4-rootfs.tar.gz'
 export arch_md5="$arch.md5"
 
+# archlinux install tutorial
+# https://learnku.com/articles/57090
+
 # manjaro linux arm64
 export manjaro_mate='https://mirrors.tuna.tsinghua.edu.cn/osdn/storage/g/m/ma/manjaro-arm/rpi4/mate/20.12.1/Manjaro-ARM-mate-rpi4-20.12.1.img.xz'
 export manjaro_mate_sha1="$manjaro_mate.sha1"

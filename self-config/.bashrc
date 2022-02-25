@@ -144,3 +144,5 @@ alias gii="git init"
 alias gicl="gils | xargs cat | wc -l"
 
 export PATH="$PATH:$HOME/Downloads/VSCodium/bin"
+
+alias vims="vim -S Session.vim"

@@ -18,6 +18,9 @@ noremap <leader>yd :<C-u>Yde<CR>
 " for nerd tree use
 map <F3> :NERDTreeMirror<CR>
 map <F3> :NERDTreeToggle<CR>
+" For Taglist use
+map <F4> :TlistOpen<CR>
+
 " auto open when no file choosen
 autocmd vimenter * if !argc()|NERDTree|endif
 let NERDTreeIgnore = ['\.pyc$', '^__pycache__$']  " 过滤所有.pyc文件不显示
@@ -31,27 +34,28 @@ autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
 
 call plug#begin('/usr/share/vim/vim82/plugged')
 
-Plug 'https://hub.fastgit.org/junegunn/vim-easy-align.git'
+Plug 'https://github.com/junegunn/vim-easy-align.git'
 
-Plug 'https://hub.fastgit.org/preservim/nerdtree.git'
+Plug 'https://github.com/preservim/nerdtree.git'
 
-Plug 'https://hub.fastgit.org/jistr/vim-nerdtree-tabs.git'
+Plug 'https://github.com/jistr/vim-nerdtree-tabs.git'
 
-Plug 'https://hub.fastgit.org/Xuyuanp/nerdtree-git-plugin.git'
+Plug 'https://github.com/Xuyuanp/nerdtree-git-plugin.git'
 
-Plug 'https://hub.fastgit.org/jiangmiao/auto-pairs.git'
+Plug 'https://github.com/jiangmiao/auto-pairs.git'
 
-Plug 'https://hub.fastgit.org/vim-airline/vim-airline.git'
+Plug 'https://github.com/vim-airline/vim-airline.git'
 
 "Plug 'ianva/vim-youdao-translater'
 
-Plug 'https://hub.fastgit.org/vim-scripts/SuperTab.git'
+Plug 'https://github.com/vim-scripts/SuperTab.git'
+Plug 'https://github.com/vim-scripts/taglist.vim'
 
 "Plug 'airblade/vim-gitgutter'
 
-Plug 'https://hub.fastgit.org/acarapetis/vim-colors-github.git'
-Plug 'https://hub.fastgit.org/rakr/vim-one.git'
-Plug 'https://hub.fastgit.org/jacoborus/tender.vim.git'
+Plug 'https://github.com/acarapetis/vim-colors-github.git'
+Plug 'https://github.com/rakr/vim-one.git'
+Plug 'https://github.com/jacoborus/tender.vim.git'
 
 call plug#end()
 

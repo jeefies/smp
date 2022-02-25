@@ -1,7 +1,7 @@
 [user]
 	email = jeefy163@163.com
 	name = jeefies
-# [http]
-# 	proxy = 0.0.0.0:7890
 [core]
 	editor = vim
+[url "https://ghproxy.com/"]
+	insteadOf = https://
