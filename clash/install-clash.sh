@@ -1,5 +1,6 @@
-config_file="https://github.com/skywolf627/VmessActions/raw/main/clash.yml"
-config_file="https://raw.githubusercontent.com/adiwzx/freenode/main/adispeed.yml"
+#config_file="https://github.com/skywolf627/VmessActions/raw/main/clash.yml"
+#config_file="https://raw.githubusercontent.com/adiwzx/freenode/main/adispeed.yml"
+config_file="https://raw.githubusercontent.com/oslook/clash-freenode/main/clash.yaml"
 proxy_url="https://ghproxy.com/"
 clash_url="https://github.com/Dreamacro/clash/releases/download/v1.7.1/clash-linux-armv"
 clash_url_end="-v1.7.1.gz"

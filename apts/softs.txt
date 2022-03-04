@@ -1,6 +1,0 @@
-midori
-totem
-kate
-vim
-vim-gtk
-vim-gtk3
