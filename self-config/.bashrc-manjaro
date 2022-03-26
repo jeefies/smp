@@ -1,0 +1,31 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+alias ls='ls --color=auto'
+alias la='ls -A'
+alias ll='ls -lsh'
+PS1='[\u@\h \W]\$ '
+
+export GOROOT="$HOME/.go"
+export PATH="$GOROOT/bin:$PATH"
+
+# for python scripts
+export PATH="$HOME/.local/bin:$PATH"
+
+alias vims="vim -S Session.vim"
+
+alias gis='git status'
+alias gic='git commit'
+alias gir='git remote'
+alias girs='git remote show'
+alias gia='git add'
+alias giu='git add -u'
+alias giaa='git add -A'
+alias gip='git push origin master'
+alias gipe="git push ee master"
+
+alias nowshut="shutdown -h now"
