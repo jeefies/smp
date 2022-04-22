@@ -11,10 +11,9 @@ syntax enable
 syntax on
 filetype plugin indent on
 
-" for yaodao translation
-vnoremap <silent> <C-T> :<C-u>Ydv<CR>
-nnoremap <silent> <C-T> :<C-u>Ydc<CR>
-noremap <leader>yd :<C-u>Yde<CR>
+nmap gp "+p
+nmap gy "+y
+nmap gd "+d
 
 " for nerd tree use
 map <F3> :NERDTreeMirror<CR>
@@ -71,5 +70,11 @@ func! RunCompile()
 	exec "w"
 	if &filetype == 'tcl'
 		exec "!tclsh %"
+	endif
+	if &filetype == 'c'
+		exec "!gcc % -o %<; ./%<"
+	endif
+	if &filetype == 'go'
+		exec "!go run %"
 	endif
 endfunc
