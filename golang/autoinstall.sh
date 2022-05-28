@@ -2,7 +2,7 @@
 
 os_type=`uname -m`
 
-version="1.17.2"
+version="1.17.10"
 go64="https://golang.google.cn/dl/go$version.linux-arm64.tar.gz"
 go32="https://golang.google.cn/dl/go$version.linux-armv6l.tar.gz"
 
