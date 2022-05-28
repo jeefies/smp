@@ -27,6 +27,7 @@ alias giu='git add -u'
 alias giaa='git add -A'
 alias gip='git push origin master'
 alias gipe="git push ee master"
+alias gica='git commit -a'
 
 alias nowshut="shutdown -h now"
 

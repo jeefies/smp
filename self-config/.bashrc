@@ -133,13 +133,18 @@ _pip_completion()
 complete -o default -F _pip_completion pip3
 # pip bash completion end
 
-alias gia="git add"
-alias gis="git status"
-alias gic="git commit"
-alias gip="git push"
-alias gil="git log"
-alias gils="git ls-files"
-alias gii="git init"
+alias gis='git status'
+alias gic='git commit'
+alias gir='git remote'
+alias girs='git remote show'
+alias gia='git add'
+alias giu='git add -u'
+alias giaa='git add -A'
+alias gip='git push origin master'
+alias gipe="git push ee master"
+alias gica='git commit -a'
+
+alias nowshut="shutdown -h now"
 
 alias gicl="gils | xargs cat | wc -l"
 
