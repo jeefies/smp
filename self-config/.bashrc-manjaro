@@ -15,6 +15,15 @@ export PATH="$GOROOT/bin:$PATH"
 
 # for python scripts
 export PATH="$HOME/.local/bin:$PATH"
+# pip bash completion start
+_pip_completion()
+{
+    COMPREPLY=( $( COMP_WORDS="${COMP_WORDS[*]}" \
+                   COMP_CWORD=$COMP_CWORD \
+                   PIP_AUTO_COMPLETE=1 $1 2>/dev/null ) )
+}
+complete -o default -F _pip_completion pip3
+# pip bash completion end
 
 alias vims="vim -S Session.vim"
 
@@ -28,8 +37,14 @@ alias giaa='git add -A'
 alias gip='git push origin master'
 alias gipe="git push ee master"
 alias gica='git commit -a'
+alias gicl="gils | xargs cat | wc -l"
 
 alias nowshut="shutdown -h now"
+
+alias psf="ps -ef | dd status=none"
+
+RUSTUP_DIST_SERVER="https://mirrors.tuna.tsinghua.edu.cn/rustup"
+RUSTUP_UPDATE_ROOT="https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup"
 
 # in /etc/profile
 # export XMODIFIERS=@im=fcitx

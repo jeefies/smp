@@ -151,3 +151,7 @@ alias gicl="gils | xargs cat | wc -l"
 export PATH="$PATH:$HOME/Downloads/VSCodium/bin"
 
 alias vims="vim -S Session.vim"
+alias psf="ps -ef | dd status=none"
+
+RUSTUP_DIST_SERVER="https://mirrors.tuna.tsinghua.edu.cn/rustup"
+RUSTUP_UPDATE_ROOT="https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup"

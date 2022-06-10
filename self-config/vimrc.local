@@ -77,4 +77,7 @@ func! RunCompile()
 	if &filetype == 'go'
 		exec "!go run %"
 	endif
+	if &filetype == 'rust'
+		exec "!rustc %; ./%<"
+	endif
 endfunc
