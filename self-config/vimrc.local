@@ -15,11 +15,14 @@ nmap gp "+p
 nmap gy "+y
 nmap gd "+d
 
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
+nmap tn :tabnew<CR>
+
 " for nerd tree use
 map <F3> :NERDTreeMirror<CR>
 map <F3> :NERDTreeToggle<CR>
-" For Taglist use
-map <F4> :TlistOpen<CR>
 
 " auto open when no file choosen
 autocmd vimenter * if !argc()|NERDTree|endif
@@ -50,7 +53,7 @@ Plug 'https://github.com/vim-airline/vim-airline.git'
 "Plug 'ianva/vim-youdao-translater'
 
 Plug 'https://github.com/vim-scripts/SuperTab.git'
-Plug 'https://github.com/vim-scripts/taglist.vim'
+"Plug 'https://github.com/vim-scripts/taglist.vim'
 
 "Plug 'airblade/vim-gitgutter'
 
@@ -60,8 +63,20 @@ Plug 'https://github.com/jacoborus/tender.vim.git'
 
 call plug#end()
 
+let light_time = 7
+let dark_time = 20
 set background=dark
 colorscheme tender
+
+let current_hour = system("date +%H")
+if v:shell_error == 0
+	if current_hour > light_time 
+		if current_hour < dark_time
+			set background=light
+			colorscheme one
+		endif
+	endif
+endif
 
 " Map F5 running!
 map <F5> :call RunCompile()<CR>
@@ -72,7 +87,10 @@ func! RunCompile()
 		exec "!tclsh %"
 	endif
 	if &filetype == 'c'
-		exec "!gcc % -o %<; ./%<"
+		exec "!gcc % -o %< -lm -g; ./%<"
+	endif
+	if &filetype == 'cpp'
+		exec "!g++ % -o %< -lm -g; ./%<"
 	endif
 	if &filetype == 'go'
 		exec "!go run %"
@@ -81,3 +99,69 @@ func! RunCompile()
 		exec "!rustc %; ./%<"
 	endif
 endfunc
+
+func CHeader()
+	call append(0, "/*")
+	call append(1, " * Author: Jeefy Fu")
+	call append(2, " * Email: jeefy163@163.com")
+	call append(3, " * Description:")
+	call append(4, " */")
+	call append(5, "")
+	call append(6, "#include <stdlib.h>")
+	call append(7, "#include <stdio.h>")
+	call append(8, "#include <stdint.h>")
+	call append(9, "#include <string.h>")
+	call append(10,"#include <math.h>")
+	call append(11,"#include <unistd.h>")
+	call append(12, "")
+	exec ":4"
+endfunc
+
+func CppHeader()
+	call append(0, "/*")
+	call append(1, " * Author: Jeefy Fu")
+	call append(2, " * Email: jeefy163@163.com")
+	call append(3, " * Description:")
+	call append(4, " */")
+	call append(5, "")
+	call append(6, "#include <iostream>")
+	call append(7, "#include <cmath>")
+	call append(8, "#include <fstream>")
+	call append(9, "#include <sstream>")
+	call append(10, "#include <vector>")
+	call append(11, "#include <array>")
+	call append(12, "#include <string>")
+	call append(13, "#include <algorithm>")
+	call append(14, "#include <cstring>")
+	exec ":4"
+endfunc
+
+func GoHeader()
+	call append(0, "/*")
+	call append(1, " * Author: Jeefy Fu")
+	call append(2, " * Email: jeefy163@163.com")
+	call append(3, " * Description:")
+	call append(4, " */")
+	call append(5, "package")
+	call append(6, "")
+	call append(7, "import (")
+	call append(8, ")")
+	exec ":6"
+endfunc
+
+func AddHeader()
+	if &filetype == 'go'
+		call GoHeader()
+	elseif &filetype == 'c'
+		call CHeader()
+	elseif &filetype == 'cpp'
+		call CppHeader()
+	endif
+endfunc
+
+map <F4> :call AddHeader()<CR>
+
+map <F2> :!cat %<CR>
+
+au VimEnter * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+au VimLeave * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'

@@ -1,6 +1,5 @@
-#config_file="https://github.com/skywolf627/VmessActions/raw/main/clash.yml"
-#config_file="https://raw.githubusercontent.com/adiwzx/freenode/main/adispeed.yml"
-config_file="https://raw.githubusercontent.com/oslook/clash-freenode/main/clash.yaml"
+# config_file="https://ghproxy.com/raw.githubusercontent.com/adiwzx/freenode/main/adispeed.yml"
+config_file="https://maoy.cc/mfdy"
 proxy_url="https://ghproxy.com/"
 clash_url="https://github.com/Dreamacro/clash/releases/download/v1.7.1/clash-linux-armv"
 clash_url_end="-v1.7.1.gz"
@@ -13,14 +12,14 @@ fi
 
 if [ ! -f "/etc/clash/config.yaml" ]; then
 	echo "Get clash config file to /etc/clash"
-	wget $proxy_url$config_file -O /etc/clash/config.yaml
+	wget $config_file -O /etc/clash/config.yaml
 else
 	echo "Config File Already exists"
 fi
 
 if [ $1 = "update" ]; then
 	echo "Update Clash config file"
-	wget $proxy_url$config_file -O /etc/clash/config.yaml
+	wget $config_file -O /etc/clash/config.yaml
 fi
 
 if [ ! -f "/usr/bin/clash" ]; then
@@ -37,7 +36,7 @@ if [ ! -f "/usr/bin/clash" ]; then
 	echo "extract to /usr/bin/clash"
 fi
 
-sudo chmod +x /usr/bin/clash
+chmod +x /usr/bin/clash
 
 echo "Get sources done, start to create clash service"
 cp ./clash.service /etc/systemd/system
