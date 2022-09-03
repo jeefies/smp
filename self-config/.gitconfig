@@ -3,5 +3,5 @@
 	name = jeefies
 [core]
 	editor = vim
-[url "https://ghproxy.com/"]
-	insteadOf = https://
+[url "https://ghproxy.com/github.com"]
+	insteadOf = https://github.com
