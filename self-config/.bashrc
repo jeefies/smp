@@ -155,3 +155,9 @@ alias psf="ps -ef | dd status=none"
 
 RUSTUP_DIST_SERVER="https://mirrors.tuna.tsinghua.edu.cn/rustup"
 RUSTUP_UPDATE_ROOT="https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup"
+
+function activeVM64() {
+	cd /opt/v64
+	sudo ./change.sh
+	DISPLAY=:0 sudo chroot .
+}

@@ -35,7 +35,7 @@ let NERDTreeDirArrows = 1
 " Open the existing NERDTree on each new tab.
 autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
 
-" curl -fLo /usr/share/vim/vim82/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+" curl -fLo /usr/share/vim/vim82/autoload/plug.vim --create-dirs https://ghproxy.com/raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 call plug#begin('/usr/share/vim/vim82/plugged')
 
 Plug 'https://github.com/junegunn/vim-easy-align.git'
@@ -97,6 +97,9 @@ func! RunCompile()
 	endif
 	if &filetype == 'rust'
 		exec "!rustc %; ./%<"
+	endif
+	if &filetype == 'd'
+		exec "!ldc2 %; ./%<"
 	endif
 endfunc
 
@@ -163,5 +166,5 @@ map <F4> :call AddHeader()<CR>
 
 map <F2> :!cat %<CR>
 
-au VimEnter * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
-au VimLeave * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
+"au VimEnter * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+"au VimLeave * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
