@@ -1,4 +1,23 @@
+" All system-wide defaults are set in $VIMRUNTIME/archlinux.vim (usually just
+" /usr/share/vim/vimfiles/archlinux.vim) and sourced by the call to :runtime
+" you can find below.  If you wish to change any of those settings, you should
+" do it in this file (/etc/vimrc), since archlinux.vim will be overwritten
+" everytime an upgrade of the vim packages is performed.  It is recommended to
+" make changes after sourcing archlinux.vim since it alters the value of the
+" 'compatible' option.
+
+" This line should not be removed as it ensures that various options are
+" properly set to work with the Vim-related packages.
+runtime! archlinux.vim
+
+" If you prefer the old-style vim functionalty, add 'runtime! vimrc_example.vim'
+" Or better yet, read /usr/share/vim/vim80/vimrc_example.vim or the vim manual
+" and configure vim to your own liking!
+
+" do not load defaults if ~/.vimrc is missing
+"let skip_defaults_vim=1
 set cursorline " highlight current line
+set cursorcolumn
 set nu
 
 " tab 缩进
@@ -35,6 +54,8 @@ let NERDTreeDirArrows = 1
 " Open the existing NERDTree on each new tab.
 autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
 
+let g:snipMate = { 'snippet_version' : 1 }
+
 " curl -fLo /usr/share/vim/vim82/autoload/plug.vim --create-dirs https://ghproxy.com/raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 call plug#begin('/usr/share/vim/vim82/plugged')
 
@@ -52,8 +73,13 @@ Plug 'https://github.com/vim-airline/vim-airline.git'
 
 "Plug 'ianva/vim-youdao-translater'
 
-Plug 'https://github.com/vim-scripts/SuperTab.git'
+"Plug 'https://github.com/vim-scripts/SuperTab.git'
 "Plug 'https://github.com/vim-scripts/taglist.vim'
+"
+Plug 'https://github.com/marcweber/vim-addon-mw-utils'
+Plug 'https://github.com/tomtom/tlib_vim'
+Plug 'https://github.com/garbas/vim-snipmate'
+Plug 'https://github.com/jeefies/vim-snippets'
 
 "Plug 'airblade/vim-gitgutter'
 
