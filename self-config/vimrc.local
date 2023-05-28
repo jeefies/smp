@@ -89,7 +89,7 @@ Plug 'https://github.com/jacoborus/tender.vim.git'
 
 call plug#end()
 
-let light_time = 7
+let light_time = 9
 let dark_time = 20
 set background=dark
 colorscheme tender
@@ -113,10 +113,10 @@ func! RunCompile()
 		exec "!tclsh %"
 	endif
 	if &filetype == 'c'
-		exec "!gcc % -o %< -lm -g; ./%<"
+		exec "!gcc % -o %< -Wall -Wextra -lm -g; ./%<"
 	endif
 	if &filetype == 'cpp'
-		exec "!g++ % -o %< -lm -g; ./%<"
+		exec "!g++ % -o %< -Wall -Wextra -lm -g; ./%<"
 	endif
 	if &filetype == 'go'
 		exec "!go run %"
@@ -128,67 +128,6 @@ func! RunCompile()
 		exec "!ldc2 %; ./%<"
 	endif
 endfunc
-
-func CHeader()
-	call append(0, "/*")
-	call append(1, " * Author: Jeefy Fu")
-	call append(2, " * Email: jeefy163@163.com")
-	call append(3, " * Description:")
-	call append(4, " */")
-	call append(5, "")
-	call append(6, "#include <stdlib.h>")
-	call append(7, "#include <stdio.h>")
-	call append(8, "#include <stdint.h>")
-	call append(9, "#include <string.h>")
-	call append(10,"#include <math.h>")
-	call append(11,"#include <unistd.h>")
-	call append(12, "")
-	exec ":4"
-endfunc
-
-func CppHeader()
-	call append(0, "/*")
-	call append(1, " * Author: Jeefy Fu")
-	call append(2, " * Email: jeefy163@163.com")
-	call append(3, " * Description:")
-	call append(4, " */")
-	call append(5, "")
-	call append(6, "#include <iostream>")
-	call append(7, "#include <cmath>")
-	call append(8, "#include <fstream>")
-	call append(9, "#include <sstream>")
-	call append(10, "#include <vector>")
-	call append(11, "#include <array>")
-	call append(12, "#include <string>")
-	call append(13, "#include <algorithm>")
-	call append(14, "#include <cstring>")
-	exec ":4"
-endfunc
-
-func GoHeader()
-	call append(0, "/*")
-	call append(1, " * Author: Jeefy Fu")
-	call append(2, " * Email: jeefy163@163.com")
-	call append(3, " * Description:")
-	call append(4, " */")
-	call append(5, "package")
-	call append(6, "")
-	call append(7, "import (")
-	call append(8, ")")
-	exec ":6"
-endfunc
-
-func AddHeader()
-	if &filetype == 'go'
-		call GoHeader()
-	elseif &filetype == 'c'
-		call CHeader()
-	elseif &filetype == 'cpp'
-		call CppHeader()
-	endif
-endfunc
-
-map <F4> :call AddHeader()<CR>
 
 map <F2> :!cat %<CR>
 

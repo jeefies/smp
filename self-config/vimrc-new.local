@@ -1,0 +1,132 @@
+" All system-wide defaults are set in $VIMRUNTIME/archlinux.vim (usually just
+" /usr/share/vim/vimfiles/archlinux.vim) and sourced by the call to :runtime
+" you can find below.  If you wish to change any of those settings, you should
+" do it in this file (/etc/vimrc), since archlinux.vim will be overwritten
+" everytime an upgrade of the vim packages is performed.  It is recommended to
+" make changes after sourcing archlinux.vim since it alters the value of the
+" 'compatible' option.
+
+" This line should not be removed as it ensures that various options are
+" properly set to work with the Vim-related packages.
+runtime! archlinux.vim
+
+" If you prefer the old-style vim functionalty, add 'runtime! vimrc_example.vim'
+" Or better yet, read /usr/share/vim/vim80/vimrc_example.vim or the vim manual
+" and configure vim to your own liking!
+
+" do not load defaults if ~/.vimrc is missing
+"let skip_defaults_vim=1
+set cursorline " highlight current line
+set cursorcolumn
+set nu
+
+" tab 缩进
+set tabstop=4 " 设置Tab长度为4空格
+set shiftwidth=4 " 设置自动缩进长度为4空格
+set autoindent " 继承前一行的缩进方式，适用于多行注释
+
+syntax enable
+syntax on
+filetype plugin indent on
+
+" for nerd tree use
+map <C-n> :NERDTreeMirror<CR>
+map <C-n> :NERDTreeToggle<CR>
+" auto open when no file choosen
+let g:NERDTreeShowLineNumbers=1  " 是否显示行号
+let g:NERDTreeHidden=0     "不显示隐藏文件
+"Making it prettier
+let g:NERDTreeMinimalUI = 1
+let g:NERDTreeDirArrows = 1
+
+"NerdCommentor!!!!!!
+" Create default mappings
+let g:NERDCreateDefaultMappings = 1
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '//' } }
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+" Enable NERDCommenterToggle to check all selected lines is commented or not
+let g:NERDToggleCheckAllLines = 1
+
+"Coc
+" May need for Vim (not Neovim) since coc.nvim calculates byte offset by count
+" utf-8 byte sequence
+set encoding=utf-8
+" Some servers have issues with backup files, see #649
+set nobackup
+set nowritebackup
+
+" Having longer updatetime (default is 4000 ms = 4s) leads to noticeable
+" delays and poor user experience
+set updatetime=300
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved
+set signcolumn=yes
+
+" Use tab for trigger completion with characters ahead and navigate
+" NOTE: There's always complete item selected by default, you may want to enable
+" no select by `"suggest.noselect": true` in your configuration file
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" AyncRun
+let g:asyncrun_open = 6
+
+" curl -fLo /usr/share/vim/vim82/autoload/plug.vim --create-dirs https://ghproxy.com/raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+call plug#begin('/usr/share/vim/vim82/plugged')
+Plug 'neoclide/coc.nvim', {'branch' : 'release'}
+
+" For Appearance
+Plug 'rakr/vim-one'
+Plug 'jacoborus/tender.vim'
+Plug 'vim-airline/vim-airline'
+
+Plug 'preservim/nerdtree'
+Plug 'preservim/nerdcommenter'
+
+Plug 'junegunn/vim-easy-align'
+Plug 'jiangmiao/auto-pairs'
+
+Plug 'skywind3000/asynctasks.vim'
+Plug 'skywind3000/asyncrun.vim'
+
+call plug#end()
+
+let light_time = 9
+let dark_time = 20
+set background=dark
+colorscheme tender
+let current_hour = system("date +%H")
+if v:shell_error == 0
+	if current_hour > light_time 
+		if current_hour < dark_time
+			set background=light
+			colorscheme one
+		endif
+	endif
+endif
+
+"au VimEnter * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+"au VimLeave * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
