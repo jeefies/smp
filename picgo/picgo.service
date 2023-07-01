@@ -1,0 +1,10 @@
+[Unit]
+AssertPathExists=/home/jeefy/.local/bin
+
+[Service]
+WorkingDirectory=/home/jeefy/.local/bin
+ExecStart=/home/jeefy/.local/bin/picgo-gui
+Restart=always
+
+[Install]
+WantedBy=default.target
